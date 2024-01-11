@@ -19,16 +19,22 @@ class Autocall_CCBN(object):
         Initialize the Autocall_CCBN object with parameters.
         """
          
-        self._npaths_mc = 1000
+        self._coupon = coupon
+        self._principal = principal
+        self._call_level = call_level  
+        self._barrier = barrier
+        self._strike = strike
+        self._fixing_schedule = fixing_schedule
+        self._npaths_mc = 10000
         self._nsteps_mc = 300
         self._rnd_seed = 10000
-        self._delta_bump = 10
-        self._delta_bump_is_percent = True
-        self._gamma_bump = 10
-        self._gamma_bump_is_percent = True
-        self._vega_bump = 0.1
-        self._vega_bump_is_percent = False
-        self._theta_bump = 1 / 365
+        self._delta_bump=10
+        self._delta_bump_is_percent=True
+        self._gamma_bump=10
+        self._gamma_bump_is_percent=True
+        self._vega_bump=0.1
+        self._vega_bump_is_percent=False
+        self._theta_bump=1/365
         self._vanna_dvega = False
         self._rho_bump = 0.1
         self._spot_minimum = 10e-6
@@ -78,7 +84,7 @@ class Autocall_CCBN(object):
             payoff = 0
             missed_coupon = 1
             exp = math.exp
-            #ds_principal = exp(-rate * T) * N # Nominal value discounted
+            ds_principal = exp(-rate * T) * N # Nominal value discounted
 
             for j in range(n_fix):
                 df = exp(-rate * t_fix[j])
@@ -345,11 +351,12 @@ def main_autocall():
     autocall1._theta_bump = 0.1
 
     # Uncomment the following line to print debug information from the pricer
-    # autocall1.pricer(spot, vol, rate, div, True)
+    autocall1.pricer(spot, vol, rate, div, True)
 
     # Generate spot ladder and plot Greeks
     spot_list = np.arange(150, 400, 5)
-    autocall1.spot_ladder(spot_list, vol, rate, div)
+    #autocall1.spot_ladder(spot_list, vol, rate, div)
+    
 
 if __name__ == '__main__':
     main_autocall()
