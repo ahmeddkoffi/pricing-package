@@ -1,1 +1,0 @@
-On the P&L chart, one can observe the option prices for various entry spots. Such a chart allows for the analysis of the optimal entry point to purchase an autocall, while other charts enable the tracking of the evolution of various Greeks as hedge ratios.
