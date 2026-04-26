@@ -1,0 +1,29 @@
+# Build folders
+build/
+cmake-build-*/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+# Executables
+*.exe
+*.out
+*.app
+*.dSYM/
+test_q11
+test_q12
+test_q13
+test_option_a
+plot_vol_surface
+
+# Generated data / plots
+*.dat
+*.png
+
+# IDE
+.idea/
+.vscode/
+
+# macOS
+.DS_Store
